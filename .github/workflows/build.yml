@@ -2,11 +2,11 @@ name: Build Windows EXE
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   build:
-    runs-on: windows-latest # <-- Meminta GitHub meminjamkan OS Windows
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v3
