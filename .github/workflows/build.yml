@@ -1,0 +1,32 @@
+name: Build Windows EXE
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest # <-- Meminta GitHub meminjamkan OS Windows
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install hid psutil pystray Pillow pyinstaller
+
+    - name: Build EXE using Pyinstaller
+      run: |
+        pyinstaller --onefile --noconsole --uac-admin main.py
+
+    - name: Upload EXE
+      uses: actions/upload-artifact@v3
+      with:
+        name: Macropad-M33
+        path: dist/M33.exe

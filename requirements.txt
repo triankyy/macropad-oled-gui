@@ -1,0 +1,5 @@
+hidapi
+psutil
+pystray
+Pillow
+pyinstaller
