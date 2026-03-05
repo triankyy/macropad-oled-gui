@@ -30,4 +30,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Macropad-M33
-        path: dist/M33.exe
+        path: dist/main.exe
