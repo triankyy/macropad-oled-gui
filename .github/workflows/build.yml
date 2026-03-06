@@ -10,7 +10,8 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout Code
+      uses: actions/checkout@v4
 
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -26,8 +27,9 @@ jobs:
       run: |
         pyinstaller --onefile --noconsole --uac-admin main.py
 
-    - name: Upload EXE
+    - name: Upload Temporary Artifact
       uses: actions/upload-artifact@v4
       with:
         name: Macropad-M33
         path: dist/main.exe
+        retention-days: 7
